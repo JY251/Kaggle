@@ -61,4 +61,6 @@ model.fit(train_set[features], train_set[target])
 test_set["Survived"] = model.predict(test_set[features])
 
 submission = test_set[["PassengerId", "Survived"]]
+submission["PassengerId"] = submission["PassengerId"].astype("int32")
+submission["Survived"] = submission["Survived"].astype("int32")
 submission.to_csv("data/submission.csv", index=False)
